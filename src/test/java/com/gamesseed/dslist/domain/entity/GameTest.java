@@ -1,8 +1,6 @@
-package com.gamesseed.dslist.entity;
+package com.gamesseed.dslist.domain.entity;
 
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class GameTest {
 
