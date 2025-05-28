@@ -17,6 +17,6 @@ public class GameList {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
-    private String nome;
+    private String name;
 
 }
