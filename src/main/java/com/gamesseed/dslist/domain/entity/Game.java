@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 import static jakarta.persistence.GenerationType.*;
 
 @Entity
-@Table (name = "TB_GAME")
+@Table (name = "tb_game")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
