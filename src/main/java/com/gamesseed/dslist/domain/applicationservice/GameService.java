@@ -1,6 +1,7 @@
 package com.gamesseed.dslist.domain.applicationservice;
 
 import com.gamesseed.dslist.domain.entity.Game;
+import com.gamesseed.dslist.domain.projections.GameMinProjection;
 import com.gamesseed.dslist.domain.repository.GameRepository;
 import com.gamesseed.dslist.infrastructure.dto.GameDTO;
 import com.gamesseed.dslist.infrastructure.dto.GameMinDTO;
@@ -28,5 +29,12 @@ public class GameService {
         List<Game> result = gameRepository.findAll();
         List<GameMinDTO> dto = result.stream().map(x -> new GameMinDTO(x)).toList();
         return dto;
+    }
+
+    @Transactional(readOnly = true)
+    public List<GameMinDTO> findByList(Long listId) {
+        List<GameMinProjection> result = gameRepository.searchByList(listId);
+        return result.stream().map(x -> new GameMinDTO(x)).toList();
+
     }
 }

@@ -1,6 +1,7 @@
 package com.gamesseed.dslist.infrastructure.dto;
 
 import com.gamesseed.dslist.domain.entity.Game;
+import com.gamesseed.dslist.domain.projections.GameMinProjection;
 import lombok.Data;
 
 @Data
@@ -18,5 +19,13 @@ public class GameMinDTO {
         year = entity.getYear();
         imgUrl = entity.getImgUrl();
         shortDescription = entity.getShortDescription();
+    }
+
+    public GameMinDTO(GameMinProjection projection) {
+        id = projection.getId();
+        title = projection.getTitle();
+        year = projection.getYear();
+        imgUrl = projection.getImgUrl();
+        shortDescription = projection.getShortDescription();
     }
 }
