@@ -16,7 +16,10 @@ public class GameList {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "ID")
     private Long id;
+
+    @Column(name = "NAME")
     private String name;
 
 }

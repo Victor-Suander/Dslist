@@ -20,25 +20,31 @@ public class Game {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "ID")
     private Long id;
 
+    @Column(name = "TITLE")
     private String title;
 
-    @Column(name = "game_year")
+    @Column(name = "GAME_YEAR")
     private Integer year;
 
+    @Column(name = "GENRE")
     private String genre;
 
+    @Column(name = "PLATFORMS")
     private String platforms;
 
+    @Column(name = "IMG_URL")
     private String imgUrl;
 
+    @Column(name = "SCORE")
     private Double score;
 
-    @Column(name = "short_description", columnDefinition = "TEXT")
+    @Column(name = "SHORT_DESCRIPTION", columnDefinition = "TEXT")
     private String shortDescription;
 
-    @Column(name = "long_description", columnDefinition = "TEXT")
+    @Column(name = "LONG_DESCRIPTION", columnDefinition = "TEXT")
     private String longDescription;
 
 }

@@ -1,5 +1,6 @@
 package com.gamesseed.dslist.domain.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -15,6 +16,7 @@ public class Belonging {
     @EmbeddedId
     private BelongingPK id = new BelongingPK();
 
+    @Column(name = "POSITION")
     private Integer position;
 
     public Belonging(Game game, GameList list, Integer position){
