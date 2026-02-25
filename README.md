@@ -169,5 +169,7 @@ Deploy em Cloud
 
 ## Autor
 
-Victor Suander Camargo Martins
-Backend Java Developer
+
+- Victor Suander Camargo Martins
+
+- Backend Java Developer
