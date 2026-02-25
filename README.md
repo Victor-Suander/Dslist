@@ -68,30 +68,30 @@ ________________________________________________________________________________
 
 ## Endpoints Principais
 
-- Listar jogos:
-GET /games
+ Listar jogos:
+- GET /games
 
 Resposta:
 
-[
-  {
-    "id": 1,
-    "title": "The Witcher 3",
-    "year": 2015
-  }
-]
+- [
+-   {
+-    "id": 1,
+-    "title": "The Witcher 3",
+-    "year": 2015
+-   }
+- ]
 _________________________________________________________________________________________________
 
 ## Reordenar jogos na lista
 
-POST /lists/{listId}/replacement
+- POST /lists/{listId}/replacement
 
 Body:
 
-{
-  "sourceIndex": 2,
-  "destinationIndex": 5
-}
+- {
+-   "sourceIndex": 2,
+-   "destinationIndex": 5
+- }
 _________________________________________________________________________________________________
 
 ## Conceitos Aplicados
