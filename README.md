@@ -24,17 +24,47 @@ Projeto estruturado com arquitetura em camadas inspirada em DDD, incluindo regra
 
 O projeto segue separação clara de responsabilidades:
 
-Domain
- ├─ Entities
- ├─ Repositories
- ├─ Services
- ├─ Projections
-
-Infrastructure
- ├─ Controllers
- ├─ DTOs
- ├─ Config
-
+src/
+├── domain/                         # Camada de domínio (regra de negócio)
+│   ├── applicationservice/         # Serviços com lógica de negócio
+│   │   ├── GameService.java
+│   │   └── GameListService.java
+│   │
+│   ├── entity/                     # Entidades JPA
+│   │   ├── Game.java
+│   │   ├── GameList.java
+│   │   ├── Belonging.java
+│   │   └── BelongingPK.java
+│   │
+│   ├── projections/                # Interfaces para queries otimizadas
+│   │   └── GameMinProjection.java
+│   │
+│   └── repository/                 # Interfaces Spring Data JPA
+│       ├── GameRepository.java
+│       └── GameListRepository.java
+│
+├── infrastructure/                 # Camada de infraestrutura
+│   ├── config/                     # Configurações da aplicação (CORS, etc)
+│   │   └── WebConfig.java
+│   │
+│   ├── controller/                 # Endpoints REST
+│   │   ├── GameController.java
+│   │   ├── GameListController.java
+│   │   └── GameConstants.java
+│   │
+│   ├── dto/                        # Data Transfer Objects
+│   │   ├── GameDTO.java
+│   │   ├── GameListDTO.java
+│   │   ├── GameMinDTO.java
+│   │   └── ReplacementDTO.java
+│
+└── resources/
+    ├── application.properties
+    ├── application-dev.properties
+    ├── application-test.properties
+    ├── application-prod.properties
+    └── import.sql
+    
 ## Princípios aplicados:
 
 Arquitetura em camadas
