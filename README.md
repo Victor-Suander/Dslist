@@ -1,175 +1,120 @@
-# DSList – Game Catalog API
-
-API REST desenvolvida em Java + Spring Boot para gerenciamento de catálogo de jogos e listas personalizadas.
-
-Projeto estruturado com arquitetura em camadas inspirada em DDD, incluindo regras de negócio para ordenação dinâmica de jogos dentro de listas.
-
-## Funcionalidades
-
- Listagem de jogos
-
- Busca de jogo por ID
-
- Listagem de categorias/listas
-
- Reordenação de jogos dentro da lista
-
- Uso de projections para otimização de queries
-
- Perfis de ambiente (dev, test, prod)
-
- Configuração de CORS
-
-## Arquitetura
-
-O projeto segue separação clara de responsabilidades:
-
-src/
-
-- ├── domain/                         # Camada de domínio (regra de negócio)
-
-- │   ├── applicationservice/         # Serviços com lógica de negócio
-
-- │   │   ├── GameService.java
-
-- │   │   └── GameListService.java
-
-- │   │
-
-- │   ├── entity/                     # Entidades JPA
-
-- │   │   ├── Game.java
-
-- │   │   ├── GameList.java
-
-- │   │   ├── Belonging.java
-
-- │   │   └── BelongingPK.java
-
-- │   │
-
-- │   ├── projections/                # Interfaces para queries otimizadas
-
-- │   │   └── GameMinProjection.java
-
-- │   │
-
-- │   └── repository/                 # Interfaces Spring Data JPA
-
-- │       ├── GameRepository.java
-
-- │       └── GameListRepository.java
-
-- │
-
-- ├── infrastructure/                 # Camada de infraestrutura
-
-- │   ├── config/                     # Configurações da aplicação (CORS, etc)
-
-- │   │   └── WebConfig.java
-
-- │   │
-
-- │   ├── controller/                 # Endpoints REST
-
-- │   │   ├── GameController.java
-
-- │   │   ├── GameListController.java
-
-- │   │   └── GameConstants.java
-
-- │   │
-
-- │   ├── dto/                        # Data Transfer Objects
-
-- │   │   ├── GameDTO.java
-
-- │   │   ├── GameListDTO.java
-
-- │   │   ├── GameMinDTO.java
-
-- │   │   └── ReplacementDTO.java
-
-- │
-
-- └── resources/
- 
--    ├── application.properties
-
--    ├── application-dev.properties
-
--    ├── application-test.properties
-
--    ├── application-prod.properties
-
--    └── import.sql
-    
-## Princípios aplicados:
-
-Arquitetura em camadas
-
-DTO pattern
-
-JPA com chave composta
-
-Projections para performance
-
-Organização por profiles
-
-## Tecnologias
-
-Java 17
-
-Spring Boot
-
-Spring Data JPA
-
-H2 Database (dev/test)
-
-PostgreSQL (prod)
-
-Maven
-
-## Como executar
-git clone https://github.com/Victor-Suander/Dslist
-cd Dslist
-mvn spring-boot:run
-
-API rodando em:
-
-http://localhost:8080
+# DSList - API REST com Spring Boot
+_________________________________________________________________________________________________
+## Sobre o Projeto
+
+O DSList é uma API REST desenvolvida com Spring Boot com o objetivo de consolidar conhecimentos em:
+
+- Arquitetura em camadas
+- Boas práticas com Spring Data JPA
+- Uso de DTOs
+- Perfis de ambiente (dev, test, prod)
+- Organização profissional de backend
+- O sistema permite listar jogos e reorganizá-los dentro de listas personalizadas.
+
+## Arquitetura do Projeto
+
+O projeto segue uma estrutura organizada em camadas:
+
+- src/
+- ├── domain/
+- │   ├── applicationservice/
+- │   ├── entity/
+- │   ├── repository/
+- │   └── exception/
+- ├── infrastructure/
+- │   ├── config/
+- │   ├── controller/
+- │   ├── dto/
+- │   ├── exception/
+- │   └── util/
+
+## Separação de responsabilidades
+
+- Controller → Responsável pelos endpoints REST
+- ApplicationService → Regras de negócio
+- Repository → Comunicação com o banco
+- DTO → Transferência de dados
+- Entity → Representação das tabelas
+Essa organização facilita manutenção, testes e evolução do sistema.
+_________________________________________________________________________________________________
+
+## Tecnologias Utilizadas
+
+- Java 17
+- Spring Boot
+- Spring Data JPA
+- Hibernate
+- H2 (dev/test)
+- PostgreSQL (produção)
+- Maven
+_________________________________________________________________________________________________
+
+## Configuração de Ambientes
+
+O projeto utiliza múltiplos profiles:
+
+- application-dev.properties
+- application-test.properties
+- application-prod.properties
+
+Para rodar em ambiente de desenvolvimento:
+
+- mvn spring-boot:run
+
+Ou definindo profile:
+
+- -Dspring.profiles.active=dev
+_________________________________________________________________________________________________
 
 ## Endpoints Principais
 
+- Listar jogos:
 GET /games
-GET /games/{id}
-GET /lists
-GET /lists/{listId}/games
+
+Resposta:
+
+[
+  {
+    "id": 1,
+    "title": "The Witcher 3",
+    "year": 2015
+  }
+]
+_________________________________________________________________________________________________
+
+## Reordenar jogos na lista
+
 POST /lists/{listId}/replacement
 
-## Aprendizados Técnicos
+Body:
 
-Modelagem com chave composta (@Embeddable)
+{
+  "sourceIndex": 2,
+  "destinationIndex": 5
+}
+_________________________________________________________________________________________________
 
-Manipulação transacional para reorder
+## Conceitos Aplicados
 
-Uso de projections customizadas
+- Injeção de Dependência
+- Padrão DTO
+- Separação em camadas
+- Queries customizadas com JPA
+- Controle transacional com @Transactional
+- Seed de banco com import.sql
+- Profiles de ambiente
+_________________________________________________________________________________________________
 
-Organização de perfis de ambiente
+## Próximos Passos
 
-## Próximos passos
-
-Implementação de frontend
-
-Documentação Swagger
-
-Dockerização
-
-Deploy em Cloud
+- Implementar autenticação (JWT ou API Key)
+- Criar front-end para consumo da API
+- Deploy em ambiente cloud
+- Implementar testes automatizados
+_________________________________________________________________________________________________
 
 ## Autor
-
-
+ 
 - Victor Suander Camargo Martins
-
-- Backend Java Developer
+- GitHub: github.com/Victor-Suander
+- LinkedIn: www.linkedin.com/in/victorsuander
